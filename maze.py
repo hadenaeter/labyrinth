@@ -10,7 +10,7 @@ class Maze():
         num_cols,
         cell_size_x,
         cell_size_y,
-        win = None,
+        window = None,
     ):
         self.__x1 = x1
         self.__y1 = y1
@@ -18,7 +18,7 @@ class Maze():
         self.__num_cols = num_cols
         self.__cell_size_x = cell_size_x
         self.__cell_size_y = cell_size_y
-        self.__win = win
+        self.__window = window
         self.__cells = []
         self.__create_cells()
 
@@ -26,8 +26,8 @@ class Maze():
         for i in range(self.__num_rows):
             self.__cells.append([])
             for j in range(self.__num_cols):
-                self.__cells[i].append(Cell(self.__win))
-                if self.__win:
+                self.__cells[i].append(Cell(self.__window))
+                if self.__window:
                     self.__draw_cell(i, j)
 
     def get_cells(self):
@@ -43,6 +43,18 @@ class Maze():
         self._animate()
 
     def _animate(self):
-        if self.__win:
-            self.__win.redraw()
-            time.sleep(0.05)
+        if self.__window:
+            self.__window.redraw()
+            time.sleep(0.01)
+
+    def __break_entrance_and_exit(self):
+        self.__cells[0][0].has_top_wall = False
+        self.__draw_cell(0, 0)
+        self.__cells[-1][-1].has_bottom_wall = False
+        last_row = len(self.__cells) - 1
+        last_col = len(self.__cells[last_row]) - 1
+        self.__draw_cell(last_row, last_col)
+
+    def break_entrance_and_exit(self):
+        """Public method to break entrance and exit walls"""
+        self.__break_entrance_and_exit()
