@@ -22,6 +22,8 @@ class Maze():
         self.__cells = []
         self.__create_cells()
 
+        self.__break_entrance_and_exit()
+
     def __create_cells(self):
         for i in range(self.__num_rows):
             self.__cells.append([])
@@ -54,7 +56,3 @@ class Maze():
         last_row = len(self.__cells) - 1
         last_col = len(self.__cells[last_row]) - 1
         self.__draw_cell(last_row, last_col)
-
-    def break_entrance_and_exit(self):
-        """Public method to break entrance and exit walls"""
-        self.__break_entrance_and_exit()
