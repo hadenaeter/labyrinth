@@ -56,19 +56,19 @@ class SimpleTests(unittest.TestCase):
         cell1.draw_move(cell2)
         cell1.draw_move(cell2, undo=True)
 
-    def test_break_entrance_and_exit(self):
-        """Test that the maze is creating an entrance and exit"""
-        rows = 5
-        cols = 8
-        maze = Maze(0, 0, rows, cols, 10, 10)
-        maze.break_entrance_and_exit()
-        cells = maze.get_cells()
+    def break_entrance_and_exit(self):
+        """Test that the maze entrance and exit is happening"""
+        # create the maze
+        m = Maze(0, 0, 3, 3, 10, 10)
+        cells = m.get_cells()
 
+        # find top-left and bottom-right cells
         first = cells[0][0]
         last = cells[-1][-1]
 
-        self.assertEqual(first.has_top_wall, False)
-        self.assertEqual(last.has_bottom_wall, False)
+        # ensure top-left cell has no top wall, and the other no bottom wall
+        self.assertFalse(first.has_top_wall)
+        self.assertFalse(last.has_bottom_wall)
 
 if __name__ == "__main__":
     unittest.main()

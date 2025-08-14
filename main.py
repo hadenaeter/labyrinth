@@ -2,8 +2,8 @@ from window import Window
 from maze import Maze
 
 def main():
-    width = 400
-    height = 300
+    width = 800
+    height = 600
 
     win = Window(width, height)
 
@@ -12,9 +12,12 @@ def main():
         y1 = 0,
         num_rows = 8,
         num_cols = 12,
-        cell_size_x = 50,
-        cell_size_y = 50,
-        window = win)
+        cell_size_x = 64,
+        cell_size_y = 64,
+        window = win,
+        seed = 10)
+
+    cells = m.get_cells()
 
     win.wait_for_close()
 
