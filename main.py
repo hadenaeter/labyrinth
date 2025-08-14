@@ -14,10 +14,9 @@ def main():
         num_cols = 12,
         cell_size_x = 64,
         cell_size_y = 64,
-        window = win,
-        seed = 10)
+        window = win,)
 
-    cells = m.get_cells()
+    m.solve()
 
     win.wait_for_close()
 

@@ -70,5 +70,14 @@ class SimpleTests(unittest.TestCase):
         self.assertFalse(first.has_top_wall)
         self.assertFalse(last.has_bottom_wall)
 
+    def test_reset_cells_visited(self):
+        """Test that cells visited status is reset after maze creation"""
+        # create maze
+        m = Maze(0, 0, 3, 3, 10, 10)
+        cells = m.get_cells()
+
+        # check that cell 0,0 is not visited
+        self.assertFalse(cells[0][0].visited)
+
 if __name__ == "__main__":
     unittest.main()
